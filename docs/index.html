@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Windows Repair Tool v4.0 - Fix Windows Update, Defender, Store & More</title>
+    <meta name="description" content="Comprehensive Windows repair tool that fixes Windows Update, Defender, Store, Search, Printing, Network issues and more. Free download.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --secondary: #00D4AA;
+            --dark: #0A0E27;
+            --dark-surface: #151A35;
+            --dark-border: #1F2642;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0AEC0;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --gradient-1: linear-gradient(135deg, #0066FF 0%, #00D4AA 100%);
+            --gradient-2: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow-sm: 0 2px 8px rgba(0, 102, 255, 0.1);
+            --shadow-md: 0 4px 20px rgba(0, 102, 255, 0.15);
+            --shadow-lg: 0 10px 40px rgba(0, 102, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Animated Background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(31, 38, 66, 0.3) 1px, transparent 1px),
+                linear-gradient(rgba(31, 38, 66, 0.3) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--dark-border);
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            box-shadow: var(--shadow-md);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .version {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .download-btn-header {
+            padding: 0.875rem 2rem;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            white-space: nowrap;
+        }
+
+        .download-btn-header:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero .highlight {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            padding: 1.25rem 3rem;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 1.25rem 3rem;
+            background: var(--dark-surface);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--dark-border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background: rgba(0, 102, 255, 0.1);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .stat-card {
+            background: var(--dark-surface);
+            border: 1px solid var(--dark-border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* Features Section */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--dark-surface);
+            border: 1px solid var(--dark-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .feature-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Steps Timeline */
+        .steps-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            box-shadow: var(--shadow-md);
+        }
+
+        .step-content {
+            flex: 1;
+            background: var(--dark-surface);
+            border: 1px solid var(--dark-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            color: var(--text-secondary);
+        }
+
+        /* Comparison Table */
+        .comparison {
+            background: var(--dark-surface);
+            border: 1px solid var(--dark-border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .comparison-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(0, 102, 255, 0.05);
+            border-bottom: 1px solid var(--dark-border);
+            font-weight: 700;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--dark-border);
+            transition: background 0.2s ease;
+        }
+
+        .comparison-row:hover {
+            background: rgba(0, 102, 255, 0.02);
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .check {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .cross {
+            color: var(--text-secondary);
+        }
+
+        /* Code Block */
+        .code-block {
+            background: #0D1117;
+            border: 1px solid var(--dark-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .code-block code {
+            font-family: 'JetBrains Mono', monospace;
+            color: #58A6FF;
+            font-size: 0.875rem;
+        }
+
+        /* Download Section */
+        .download-section {
+            background: var(--dark-surface);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            text-align: center;
+            margin: 4rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .download-section h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .download-section p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
+        }
+
+        .download-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(0, 102, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .download-info .mono {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--dark-border);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 0.25rem;
+        }
+
+        .badge.success {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--success);
+            color: var(--success);
+        }
+
+        .badge.warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: var(--warning);
+            color: var(--warning);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .comparison-header,
+            .comparison-row {
+                grid-template-columns: 2fr 1fr;
+            }
+
+            .comparison-header > :last-child,
+            .comparison-row > :last-child {
+                display: none;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">UR</div>
+                    <div class="logo-text">
+                        <h1>Ultimate Windows Repair Tool</h1>
+                        <div class="version">Version 4.0 - The Complete System Repair Suite</div>
+                    </div>
+                </div>
+                <a href="#download" class="download-btn-header">⬇ Download Free</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>
+                    Fix <span class="highlight">Every Windows Problem</span><br>
+                    With One Powerful Tool
+                </h2>
+                <p>
+                    The most comprehensive Windows repair and optimization tool available. 
+                    Fixes Windows Update, Defender, Store, Search, Printing, Network issues and more. 
+                    Completely free and open source.
+                </p>
+                
+                <div class="cta-group">
+                    <a href="#download" class="btn-primary">
+                        <span>📥</span>
+                        <span>Download Now - It's Free</span>
+                    </a>
+                    <a href="#features" class="btn-secondary">See What It Fixes</a>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-card fade-in" style="animation-delay: 0.1s">
+                        <div class="stat-number">19</div>
+                        <div class="stat-label">Repair Steps</div>
+                    </div>
+                    <div class="stat-card fade-in" style="animation-delay: 0.2s">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Issues Fixed</div>
+                    </div>
+                    <div class="stat-card fade-in" style="animation-delay: 0.3s">
+                        <div class="stat-number">2-30GB</div>
+                        <div class="stat-label">Space Freed</div>
+                    </div>
+                    <div class="stat-card fade-in" style="animation-delay: 0.4s">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Free & Safe</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">What Makes This Tool Ultimate?</h2>
+                    <p class="section-subtitle">
+                        8 brand new features added in v4.0, plus all the powerful repairs from previous versions
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3 class="feature-title">Windows Update Re-Enablement</h3>
+                        <p class="feature-desc">Fixes disabled Windows Update with comprehensive registry and service repairs.</p>
+                        <ul class="feature-list">
+                            <li>15+ registry fixes</li>
+                            <li>Removes Group Policy blocks</li>
+                            <li>Unpause updates</li>
+                            <li>Service restoration</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3 class="feature-title">Defender Re-Enablement</h3>
+                        <p class="feature-desc">Re-enables Microsoft Defender with full protection restoration.</p>
+                        <ul class="feature-list">
+                            <li>10+ registry fixes</li>
+                            <li>Real-time protection</li>
+                            <li>Cloud protection</li>
+                            <li>All services enabled</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon badge success">NEW</div>
+                        <h3 class="feature-title">Startup Optimization</h3>
+                        <p class="feature-desc">Analyzes and lists all startup programs for optimization.</p>
+                        <ul class="feature-list">
+                            <li>Lists all startup programs</li>
+                            <li>Shows impact on boot time</li>
+                            <li>Optimization guidance</li>
+                            <li>30-60s faster boot</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon badge success">NEW</div>
+                        <h3 class="feature-title">Windows Store Reset</h3>
+                        <p class="feature-desc">Completely resets Windows Store to fix download and opening issues.</p>
+                        <ul class="feature-list">
+                            <li>Cache clearing</li>
+                            <li>App re-registration</li>
+                            <li>Data reset</li>
+                            <li>Instant fix</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon badge success">NEW</div>
+                        <h3 class="feature-title">Search Index Rebuild</h3>
+                        <p class="feature-desc">Rebuilds Windows Search index to fix "can't find files" issues.</p>
+                        <ul class="feature-list">
+                            <li>Index deletion</li>
+                            <li>Complete rebuild</li>
+                            <li>Background processing</li>
+                            <li>Search works again</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon badge success">NEW</div>
+                        <h3 class="feature-title">Print Spooler Reset</h3>
+                        <p class="feature-desc">Clears stuck print jobs and resets the print spooler service.</p>
+                        <ul class="feature-list">
+                            <li>Clears print queue</li>
+                            <li>Service restart</li>
+                            <li>Removes stuck jobs</li>
+                            <li>Printing works instantly</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon badge success">NEW</div>
+                        <h3 class="feature-title">.NET Framework Repair</h3>
+                        <p class="feature-desc">Repairs .NET Framework to prevent application crashes.</p>
+                        <ul class="feature-list">
+                            <li>.NET 3.5 & 4.x check</li>
+                            <li>DISM repair</li>
+                            <li>NGen queue clear</li>
+                            <li>Apps stop crashing</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon badge success">NEW</div>
+                        <h3 class="feature-title">Disk Health Check</h3>
+                        <p class="feature-desc">Checks disk health and warns about potential failures.</p>
+                        <ul class="feature-list">
+                            <li>S.M.A.R.T. monitoring</li>
+                            <li>Failure prediction</li>
+                            <li>File system check</li>
+                            <li>Early warnings save data!</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon badge success">NEW</div>
+                        <h3 class="feature-title">Network Deep Reset</h3>
+                        <p class="feature-desc">Comprehensive network adapter and settings reset.</p>
+                        <ul class="feature-list">
+                            <li>All adapters reset</li>
+                            <li>TCP/IP stack reset</li>
+                            <li>DNS & DHCP renewal</li>
+                            <li>Fixes "No Internet"</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🧹</div>
+                        <h3 class="feature-title">Deep System Cleanup</h3>
+                        <p class="feature-desc">Frees massive amounts of disk space by removing junk.</p>
+                        <ul class="feature-list">
+                            <li>Windows.old removal</li>
+                            <li>Temp files cleanup</li>
+                            <li>Browser cache (passwords kept!)</li>
+                            <li>2-30+ GB freed</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3 class="feature-title">System Repairs</h3>
+                        <p class="feature-desc">DISM and SFC scans repair corrupted system files.</p>
+                        <ul class="feature-list">
+                            <li>DISM image repair</li>
+                            <li>SFC file scan</li>
+                            <li>Component restoration</li>
+                            <li>System stability</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon badge success">NEW</div>
+                        <h3 class="feature-title">Performance Metrics</h3>
+                        <p class="feature-desc">Before/after comparison shows real improvements.</p>
+                        <ul class="feature-list">
+                            <li>RAM usage tracking</li>
+                            <li>Disk space monitoring</li>
+                            <li>Service counting</li>
+                            <li>See the results!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Full Mode: 19 Steps to a Perfect Windows</h2>
+                    <p class="section-subtitle">
+                        Complete repair and optimization in 45-60 minutes
+                    </p>
+                </div>
+
+                <div class="steps-timeline">
+                    <div class="step-item">
+                        <div class="step-number">1-2</div>
+                        <div class="step-content">
+                            <div class="step-title">Re-Enable Critical Features</div>
+                            <div class="step-desc">Windows Update and Microsoft Defender re-enablement with registry and service fixes</div>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3-9</div>
+                        <div class="step-content">
+                            <div class="step-title badge success">NEW: System Optimization</div>
+                            <div class="step-desc">Startup analysis, Store reset, Search rebuild, Print spooler, .NET repair, Disk health check, Network deep reset</div>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">10</div>
+                        <div class="step-content">
+                            <div class="step-title">System Restore Point</div>
+                            <div class="step-desc">Safety backup created before making any changes - you can roll back if needed</div>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">11</div>
+                        <div class="step-content">
+                            <div class="step-title">Deep System Cleanup</div>
+                            <div class="step-desc">Windows.old, temp files, browser cache, error reports - typically frees 2-30+ GB</div>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">12</div>
+                        <div class="step-content">
+                            <div class="step-title">System Repairs</div>
+                            <div class="step-desc">DISM and SFC scans repair corrupted system files and Windows image</div>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">13-18</div>
+                        <div class="step-content">
+                            <div class="step-title">Windows Update Complete Reset</div>
+                            <div class="step-desc">Stop services, clear cache, re-register 36 DLLs, network reset, restart services, check for updates</div>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">19</div>
+                        <div class="step-content">
+                            <div class="step-title badge success">NEW: Performance Metrics</div>
+                            <div class="step-desc">Before/after comparison shows RAM freed, disk space gained, and system improvements</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Full Mode vs Quick Mode</h2>
+                    <p class="section-subtitle">Choose the right mode for your situation</p>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-header">
+                        <div>Feature</div>
+                        <div>Full Mode (19 steps)</div>
+                        <div>Quick Mode (10 steps)</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>Time Required</div>
+                        <div>45-60 minutes</div>
+                        <div>8-12 minutes</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>Re-enable Windows Update</div>
+                        <div class="check">✓</div>
+                        <div class="check">✓</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>Re-enable Defender</div>
+                        <div class="check">✓</div>
+                        <div class="check">✓</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>Startup Optimization</div>
+                        <div class="check">✓</div>
+                        <div class="cross">—</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>Windows Store Reset</div>
+                        <div class="check">✓</div>
+                        <div class="check">✓</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>Search Index Rebuild</div>
+                        <div class="check">✓</div>
+                        <div class="cross">—</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>Print Spooler Reset</div>
+                        <div class="check">✓</div>
+                        <div class="check">✓</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>.NET Framework Repair</div>
+                        <div class="check">✓</div>
+                        <div class="cross">—</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>Disk Health Check</div>
+                        <div class="check">✓</div>
+                        <div class="cross">—</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>Network Deep Reset</div>
+                        <div class="check">✓</div>
+                        <div class="cross">—</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>System Restore Point</div>
+                        <div class="check">✓</div>
+                        <div class="cross">—</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>Deep System Cleanup</div>
+                        <div class="check">✓</div>
+                        <div class="cross">—</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>DISM & SFC Repairs</div>
+                        <div class="check">✓</div>
+                        <div class="cross">—</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>Performance Metrics</div>
+                        <div class="check">✓</div>
+                        <div class="cross">—</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div>Windows Update Reset</div>
+                        <div class="check">✓</div>
+                        <div class="check">✓</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="download">
+            <div class="container">
+                <div class="download-section">
+                    <h3>Ready to Fix Your Windows?</h3>
+                    <p>Download the Ultimate Windows Repair Tool completely free</p>
+                    
+                    <div class="download-info">
+                        <span>📦 File:</span>
+                        <span class="mono">Reset windowsupdate clean.zip</span>
+                    </div>
+
+                    <a href="Reset windowsupdate clean.zip" class="btn-primary" download>
+                        <span>⬇</span>
+                        <span>Download Now - Free</span>
+                    </a>
+
+                    <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <span class="badge success">✓ 100% Free</span>
+                        <span class="badge success">✓ No Installation Required</span>
+                        <span class="badge success">✓ Safe & Tested</span>
+                        <span class="badge">✓ Open Source</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 4rem;">
+                    <div class="section-header">
+                        <h3 class="section-title">How to Use</h3>
+                    </div>
+
+                    <div class="code-block">
+                        <code>
+# OPTION 1: Full Repair (Recommended first time)<br>
+1. Extract the ZIP file<br>
+2. Double-click: START-HERE.bat<br>
+3. Wait 45-60 minutes<br>
+4. Restart your computer<br>
+<br>
+# OPTION 2: Quick Mode (Just the essentials)<br>
+1. Extract the ZIP file<br>
+2. Double-click: START-QUICK-MODE.bat<br>
+3. Wait 8-12 minutes<br>
+4. Done!
+                        </code>
+                    </div>
+                </div>
+
+                <div style="margin-top: 4rem;">
+                    <div class="section-header">
+                        <h3 class="section-title">What Problems Does This Fix?</h3>
+                    </div>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-title">✓ Windows Update Issues</div>
+                            <p class="feature-desc">Won't check, download, or install updates</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">✓ Defender Disabled</div>
+                            <p class="feature-desc">Can't turn on or greyed out</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">✓ Windows Store Broken</div>
+                            <p class="feature-desc">Won't open or download apps</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">✓ Search Not Working</div>
+                            <p class="feature-desc">Can't find files or folders</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">✓ Print Jobs Stuck</div>
+                            <p class="feature-desc">Documents won't print</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">✓ Programs Crashing</div>
+                            <p class="feature-desc">.NET Framework errors</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">✓ Network Problems</div>
+                            <p class="feature-desc">"No Internet" connection issues</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">✓ Slow Boot Time</div>
+                            <p class="feature-desc">Too many startup programs</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">✓ Low Disk Space</div>
+                            <p class="feature-desc">Windows.old and temp files</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Ultimate Windows Repair Tool v4.0 - The Complete System Repair Suite</p>
+            <p style="margin-top: 1rem; font-size: 0.875rem;">
+                Free and open source. Repairs Windows Update, Defender, Store, Search, Network, and more.
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.875rem; color: #4A5568;">
+                Made with ❤️ for the Windows community
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .step-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
