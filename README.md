@@ -4,6 +4,11 @@ A free, one-script **Windows repair and optimization tool** with visual progress
 
 > Built by a working IT technician after one too many stuck-update service calls. Free to use, free to change.
 
+## Screenshots
+
+![The bundled overview page (docs/index.html)](docs/screenshots/overview.png)
+*The bundled overview page (docs/index.html)*
+
 ## What it does
 
 **Full mode** (~45-60 minutes):

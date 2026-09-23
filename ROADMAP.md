@@ -3,7 +3,7 @@
 Comment on (or open) an issue first so we don't duplicate work.
 
 ## Good first issues
-- [ ] Add screenshots / a short screen recording to the README
+- [x] Add screenshots / a short screen recording to the README
 - [ ] Rename the script to `Repair-Windows.ps1` (keep a shim for the old name) and update the launchers
 - [ ] Add a `-WhatIf` switch that lists what would be changed without doing it
 - [ ] Write the results to a timestamped log file the user can attach to a ticket
