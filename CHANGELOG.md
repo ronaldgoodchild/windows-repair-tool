@@ -2,6 +2,9 @@
 
 Reconstructed from the original development history (February 2026).
 
+## [Unreleased]
+- Release zip (4.0.0) published on the Releases page with SHA-256.
+
 ## [4.0] - 2026-02-10 "Ultimate"
 - Startup program analysis, Windows Store reset, search index rebuild, Print Spooler reset, .NET repair, disk health check, deep network reset, deep cleanup, before/after performance metrics
 - Full and Quick launchers

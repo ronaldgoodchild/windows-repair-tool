@@ -9,6 +9,10 @@ A free, one-script **Windows repair and optimization tool** with visual progress
 ![The bundled overview page (docs/index.html)](docs/screenshots/overview.png)
 *The bundled overview page (docs/index.html)*
 
+## Download
+
+Grab **Windows-Repair-Tool-4.0.0.zip** from the [latest release](https://github.com/ronaldgoodchild/windows-repair-tool/releases/latest), unzip, and right-click **START-HERE.bat** > *Run as administrator*. Verify it with the `.sha256` file on the release (`certutil -hashfile <file> SHA256`). Everything is a readable PowerShell script - nothing to install.
+
 ## What it does
 
 **Full mode** (~45-60 minutes):
